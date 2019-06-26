@@ -5,6 +5,24 @@ Simple web server and Electron builder for iPyWidget-built applications
     :target: http://www.astropy.org
     :alt: Powered by Astropy Badge
 
+Installation
+------------
+
+This development package is not yet available on any package management services. Currently, the best way to install
+is from the Git repository directly
+
+.. code-block:: bash
+
+    $ pip install git+https://github.com/spacetelescope/pyllisto
+
+Or from source
+
+.. code-block:: bash
+
+    $ git clone https://github.com/nmearl/pyllisto
+    $ cd pyllisto
+    $ pip install .
+
 Usage
 -----
 
