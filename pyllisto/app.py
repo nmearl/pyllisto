@@ -1,10 +1,9 @@
 import click
 from pynpm import YarnPackage
-from flask import Flask, render_template, send_from_directory
+from flask import Flask, send_from_directory
 import os
 import shutil
 import json
-from .kernel import KernelManager
 
 
 PKG = YarnPackage(
