@@ -2,12 +2,12 @@ import * as base from '@jupyter-widgets/base';
 import * as pWidget from '@phosphor/widgets';
 
 const libs = {
-    'plotlywidget': import('plotlywidget'),
-    'bqplot': import('bqplot'),
-    'jupyter-materialui': import('jupyter-materialui'),
-    'bqplot-image-gl': import('bqplot-image-gl'),
-    'jupyter-matplotlib': import('jupyter-matplotlib'),
-    'jupyter-vuetify': import('jupyter-vuetify')
+    'plotlywidget': require('plotlywidget'),
+    'bqplot': require('bqplot'),
+    'jupyter-materialui': require('jupyter-materialui'),
+    'bqplot-image-gl': require('bqplot-image-gl'),
+    'jupyter-matplotlib': require('jupyter-matplotlib'),
+    'jupyter-vuetify': require('jupyter-vuetify')
 };
 
 import {
@@ -17,6 +17,10 @@ import {
 import {
     HTMLManager
 } from '@jupyter-widgets/html-manager';
+
+import {
+    DOMWidgetView
+} from '@jupyter-widgets/base';
 
 import '../static/widgets.css';
 
@@ -33,7 +37,7 @@ class WidgetManager extends HTMLManager {
         });
     }
 
-    display_view(msg, view, options) {
+    display_view(msg: any, view: DOMWidgetView, options: any) {
         return Promise.resolve(view).then((view) => {
             pWidget.Widget.attach(view.pWidget, this.el);
             view.on('remove', function() {
@@ -60,7 +64,7 @@ class WidgetManager extends HTMLManager {
     _get_comm_info(): Promise<any> {
         return this.kernel.requestCommInfo(
             {target: this.comm_target_name}).then(
-                reply => reply.content.comms);
+                reply => (reply.content as any).comms);
     }
 
     /**
